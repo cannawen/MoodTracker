@@ -52,10 +52,9 @@ public class RatingViewService extends Service {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(mChatHeadView, params);
 
-        //Set the close button.
-        registerButton(R.id.mood_rating_positive);
-        registerButton(R.id.mood_rating_neutral);
-        registerButton(R.id.mood_rating_negative);
+        registerButton(R.id.mood_rating_positive, "positive");
+        registerButton(R.id.mood_rating_neutral, "neutral");
+        registerButton(R.id.mood_rating_negative, "negative");
 
         mChatHeadView.findViewById(R.id.mood_rating_close).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +64,11 @@ public class RatingViewService extends Service {
         });
     }
 
-    private void registerButton(@IdRes int resId) {
+    private void registerButton(@IdRes int resId, final String mood) {
         mChatHeadView.findViewById(resId).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (appFolderExists()) {
+                if (logMoodToDisk(mood)) {
                     handleSuccessfulLog();
                 } else {
                     handleFailedLogAttempt();
@@ -78,17 +77,16 @@ public class RatingViewService extends Service {
         });
     }
 
+    private boolean logMoodToDisk(String mood) {
+        return SaveUtility.saveMood(mood);
+    }
+
     private void handleSuccessfulLog() {
         stopSelf();
     }
 
     private void handleFailedLogAttempt() {
 
-    }
-
-    private boolean appFolderExists() {
-        File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "MoodTracker");
-        return folder.exists() || folder.mkdirs();
     }
 
     @Override
