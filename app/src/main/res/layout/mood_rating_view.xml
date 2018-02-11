@@ -2,14 +2,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/floating_view"
+    android:id="@+id/mood_rating_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#99FFFFFF"
+    android:background="#333"
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/floating_button_positive"
+        android:id="@+id/mood_rating_positive"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
@@ -17,7 +17,7 @@
         tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/floating_button_neutral"
+        android:id="@+id/mood_rating_neutral"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
@@ -25,10 +25,19 @@
         tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/floating_button_negative"
+        android:id="@+id/mood_rating_negative"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_sentiment_dissatisfied_black_24dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/mood_rating_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_close_black_24dp"
         tools:ignore="ContentDescription" />
 </LinearLayout>

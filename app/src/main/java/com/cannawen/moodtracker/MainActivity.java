@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             initializeView();
         }
+
+        startService(new Intent(MainActivity.this, FloatingViewService.class));
     }
 
     /**
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startService(new Intent(MainActivity.this, FloatingViewService.class));
-                finish();
+//                finish();
             }
         });
     }
