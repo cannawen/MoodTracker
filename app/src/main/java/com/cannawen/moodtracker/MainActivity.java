@@ -2,7 +2,6 @@ package com.cannawen.moodtracker;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             initializeView();
         }
 
-        startService(new Intent(MainActivity.this, FloatingViewService.class));
+        startService(new Intent(MainActivity.this, RatingViewService.class));
     }
 
     /**
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.notify_me).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startService(new Intent(MainActivity.this, FloatingViewService.class));
+                startService(new Intent(MainActivity.this, RatingViewService.class));
 //                finish();
             }
         });

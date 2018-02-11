@@ -17,11 +17,11 @@ import java.io.File;
  * Created by canna on 2018-02-11.
  */
 
-public class FloatingViewService extends Service {
+public class RatingViewService extends Service {
     private WindowManager mWindowManager;
     private View mChatHeadView;
 
-    public FloatingViewService() {
+    public RatingViewService() {
     }
 
     @Override
