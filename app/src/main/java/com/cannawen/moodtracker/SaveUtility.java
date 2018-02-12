@@ -8,10 +8,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Date;
 
-/**
- * Created by canna on 2018-02-11.
- */
-
 public class SaveUtility {
 
     static public boolean saveMood(String mood) {

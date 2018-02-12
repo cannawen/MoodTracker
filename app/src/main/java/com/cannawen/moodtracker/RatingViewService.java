@@ -12,10 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
-/**
- * Created by canna on 2018-02-11.
- */
-
 public class RatingViewService extends Service {
     private WindowManager mWindowManager;
     private View moodRatingView;
