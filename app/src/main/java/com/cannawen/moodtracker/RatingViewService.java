@@ -20,9 +20,6 @@ public class RatingViewService extends Service {
     private WindowManager mWindowManager;
     private View moodRatingView;
 
-    public RatingViewService() {
-    }
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -31,7 +28,41 @@ public class RatingViewService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        //Inflate the chat head layout we created
+        initializeViews();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (moodRatingView != null) {
+            mWindowManager.removeView(moodRatingView);
+        }
+        AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarm.set(
+                AlarmManager.RTC_WAKEUP,
+                System.currentTimeMillis() + (3 * 1000 * 60 * 60),
+                PendingIntent.getService(this, 0, new Intent(this, RatingViewService.class), 0)
+        );
+    }
+
+    private boolean logMoodToDisk(String mood) {
+        return SaveUtility.saveMood(mood);
+    }
+
+    private void handleSuccessfulLog() {
+        stopSelf();
+    }
+
+    private void handleFailedLogAttempt() {
+
+    }
+
+    private void initializeViews() {
         moodRatingView = LayoutInflater.from(this).inflate(R.layout.mood_rating_view, null);
 
         //Add the view to the window.
@@ -74,31 +105,5 @@ public class RatingViewService extends Service {
                 }
             }
         });
-    }
-
-    private boolean logMoodToDisk(String mood) {
-        return SaveUtility.saveMood(mood);
-    }
-
-    private void handleSuccessfulLog() {
-        stopSelf();
-    }
-
-    private void handleFailedLogAttempt() {
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (moodRatingView != null) {
-            mWindowManager.removeView(moodRatingView);
-        }
-        AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarm.set(
-                AlarmManager.RTC_WAKEUP,
-                System.currentTimeMillis() + (3 * 1000 * 60 * 60),
-                PendingIntent.getService(this, 0, new Intent(this, RatingViewService.class), 0)
-        );
     }
 }
