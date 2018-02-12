@@ -9,11 +9,19 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/mood_rating_very_positive"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_sentiment_very_satisfied_24dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
         android:id="@+id/mood_rating_positive"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_sentiment_satisfied_black_24dp"
+        android:src="@drawable/ic_sentiment_satisfied_24dp"
         tools:ignore="ContentDescription" />
 
     <ImageView
@@ -21,7 +29,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_sentiment_neutral_black_24dp"
+        android:src="@drawable/ic_sentiment_neutral_24dp"
         tools:ignore="ContentDescription" />
 
     <ImageView
@@ -29,7 +37,15 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_sentiment_dissatisfied_black_24dp"
+        android:src="@drawable/ic_sentiment_dissatisfied_24dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/mood_rating_very_negative"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_sentiment_very_dissatisfied_24dp"
         tools:ignore="ContentDescription" />
 
     <ImageView

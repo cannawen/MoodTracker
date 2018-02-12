@@ -1,6 +1,7 @@
 package com.cannawen.moodtracker;
 
 import android.os.Environment;
+import android.text.format.DateFormat;
 
 import com.opencsv.CSVWriter;
 
@@ -30,7 +31,8 @@ public class SaveUtility {
                 writer = new CSVWriter(new FileWriter(filePath));
             }
 
-            String[] data = {String.valueOf(new Date().getTime()), mood};
+            Date now = new Date();
+            String[] data = {String.valueOf(now.getTime()), mood, DateFormat.format("yyyy-MM-dd hh:mm:ss a", now).toString()};
 
             writer.writeNext(data);
 

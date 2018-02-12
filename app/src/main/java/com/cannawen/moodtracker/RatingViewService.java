@@ -78,9 +78,11 @@ public class RatingViewService extends Service {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(moodRatingView, params);
 
-        registerButton(R.id.mood_rating_positive, "positive");
-        registerButton(R.id.mood_rating_neutral, "neutral");
-        registerButton(R.id.mood_rating_negative, "negative");
+        registerButton(R.id.mood_rating_very_positive, "+2");
+        registerButton(R.id.mood_rating_positive, "+1");
+        registerButton(R.id.mood_rating_neutral, "0");
+        registerButton(R.id.mood_rating_negative, "-1");
+        registerButton(R.id.mood_rating_very_negative, "-2");
 
         moodRatingView.findViewById(R.id.mood_rating_close).setOnClickListener(new View.OnClickListener() {
             @Override
