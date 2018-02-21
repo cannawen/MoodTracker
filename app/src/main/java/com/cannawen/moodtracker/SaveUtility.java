@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class SaveUtility {
 
-    static public boolean saveMood(String mood) {
+    static public boolean saveMood(String mood, String rating) {
         try {
             File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "MoodTracker");
             if (!folder.exists()) {
@@ -19,7 +19,7 @@ public class SaveUtility {
             }
 
             String filePath = folder.getPath() + File.separator + "data.csv";
-            File file = new File(filePath );
+            File file = new File(filePath);
             CSVWriter writer;
             FileWriter fileWriter;
 
@@ -32,7 +32,7 @@ public class SaveUtility {
             }
 
             Date now = new Date();
-            String[] data = {String.valueOf(now.getTime()), mood, DateFormat.format("yyyy-MM-dd hh:mm:ss a", now).toString()};
+            String[] data = {String.valueOf(now.getTime()), mood, rating, DateFormat.format("yyyy-MM-dd hh:mm:ss a", now).toString()};
 
             writer.writeNext(data);
 
